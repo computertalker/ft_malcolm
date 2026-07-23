@@ -46,6 +46,7 @@ main(int ac, char** av)
 	t_malcolm m;
 	if (!parse_point(&m, av))
 		exit(1);
+
 	while (Running) {
 		;
 	}
