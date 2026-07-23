@@ -3,11 +3,24 @@
 static volatile int Running = 1;
 
 void
-handle_sigint(int sig)
-{
+handle_sigint(int sig) {
 	(void)sig;
-	fprintf(stdout, "\n");
+	printf("\n");
 	Running = 0;
+}
+
+static
+void malcolm_header(void) {
+    printf("\033[34m ▄▄▄· ▄▄▄   ▄▄▄·           \n");
+    printf("▐█ ▀█ ▀▄ █·▐█ ▄█           \n");
+    printf("▄█▀▀█ ▐▀▀▄  ██▀·           \n");
+    printf("▐█ ▪▐▌▐█•█▌▐█▪·•           \n");
+    printf(" ▀  ▀ .▀  ▀.▀              \n");
+    printf(".▄▄ ·  ▄▄▄·            ·▄▄▄\n");
+    printf("▐█ ▀. ▐█ ▄█▪     ▪     ▐▄▄·\n");
+    printf("▄▀▀▀█▄ ██▀· ▄█▀▄  ▄█▀▄ ██▪ \n");
+    printf("▐█▄▪▐█▐█▪·•▐█▌.▐▌▐█▌.▐▌██▌.\n");
+    printf(" ▀▀▀▀ .▀    ▀█▄▀▪ ▀█▄▀▪▀▀▀ \n\033[0m\n");
 }
 
 
@@ -28,7 +41,13 @@ main(int ac, char** av)
 		exit(1);
 	}
 	signal(SIGINT, handle_sigint);
+	malcolm_header();
+
+	t_malcolm m;
+	if (!parse_point(&m, av))
+		exit(1);
 	while (Running) {
+		;
 	}
 	return (0);
 }

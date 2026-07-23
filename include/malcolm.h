@@ -15,4 +15,14 @@
 #include <ifaddrs.h>
 #include <stdbool.h>
 
+typedef struct s_malcolm {
+	struct sockaddr_in *source_ip;
+	struct sockaddr_in *target_ip;
+	struct sockaddr_ll *source_mac;
+	struct sockaddr_ll *target_mac;
+} t_malcolm;
+
+void init_malcolm(t_malcolm *m);
+bool parse_point(t_malcolm *m, char **av);
+
 #endif

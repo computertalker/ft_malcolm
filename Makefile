@@ -1,7 +1,9 @@
 NAME = ft_malcolm
-CC = cc
+CC = clang
 CFLAGS = -g -Wall -Wextra -Werror 
 SRC = src/main.c \
+      src/parse.c \
+      src/init.c
 
 OBJS = $(SRC:.c=.o)
 
